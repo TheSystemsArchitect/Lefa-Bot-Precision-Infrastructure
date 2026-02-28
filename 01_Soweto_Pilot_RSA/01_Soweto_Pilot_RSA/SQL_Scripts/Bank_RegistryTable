@@ -1,0 +1,16 @@
+-- Track Stakeholders & Payment Proxies
+CREATE TABLE banking_registry (
+    stakeholder_id INT PRIMARY KEY,
+    entity_name VARCHAR(100),
+    role ENUM('Farmer', 'IKS_Expert', 'Academic', 'Investor'),
+    payment_proxy_id VARCHAR(50) -- e.g., Mobile Money/E-wallet ID
+);
+
+-- Audit Trail for Grant Disbursements
+CREATE TABLE grant_ledger (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    source_fund VARCHAR(100), -- e.g., 'TIA Seed Capital'
+    amount_zar DECIMAL(15, 2),
+    purpose VARCHAR(255) -- e.g., 'IoT Hardware Procurement'
+);
